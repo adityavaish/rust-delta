@@ -1,0 +1,49 @@
+[package]
+name = "delta_operations"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "A Rust library for easy Delta Lake operations with Azure Data Lake Storage"
+license = "MIT"
+repository = "https://github.com/yourusername/delta_operations"
+
+[lib]
+name = "delta_operations"
+path = "src/lib.rs"
+
+[[bin]]
+name = "delta_cli"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+async-trait = "0.1"
+azure_identity = "0.21"
+azure_core = "0.21"
+tokio = { version = "1", features = ["full"] }
+deltalake-azure = "0"
+# Enable DataFusion integration for DeltaTable (adds TableProvider impl)
+deltalake = { version = "0", features = ["azure", "datafusion"] }
+datafusion = "49"
+object_store = "0.12"
+futures = "0.3"
+url = "2.5"
+azure_storage = "0.21"
+azure_storage_datalake = "0.21"
+# azure_storage_blobs = "0.21"
+tokio-stream = "0.1"
+regex = "1"
+uuid = { version = "1", features = ["v4"] }
+rand = "0.8"
+clap = { version = "4", features = ["derive"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
+
+[dev-dependencies]
+# Additional dependencies for testing
+tokio-test = "0.4"
+rstest = "0.18"
+tempfile = "3.8"
+serial_test = "3.0"
+futures = "0.3"
+doc-comment = "0.3"
